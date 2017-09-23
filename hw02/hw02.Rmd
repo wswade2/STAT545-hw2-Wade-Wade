@@ -1,0 +1,39 @@
+---
+title: "hw02"
+author: "wade"
+date: "September 23, 2017"
+output: html_document
+---
+
+Welcome to my Stat 545 hw02 page. In this homework assignment, I will be exploring the gapminder dataset by using the dplyr package that we learned about during class.
+
+First, I will load the packages I need:
+```{r}
+require(tidyverse)
+require(gapminder)
+
+```
+
+The gapminder dataset is <b>rectangular</b> data, which means, as far as I can surmise, that the if you look at all of the data at once it literally is shaped like a rectangle.
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+
