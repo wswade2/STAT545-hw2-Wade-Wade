@@ -14,9 +14,50 @@ require(gapminder)
 
 ```
 
-The gapminder dataset is <b>rectangular</b> data, which means, as far as I can surmise, that the if you look at all of the data at once it literally is shaped like a rectangle.
+The gapminder dataset is <b>rectangular</b> data, which means, as far as I can surmise, that if you look at all of the data at once it literally is shaped like a rectangle.
 
+Next, let's "smell test" the data to get a feel for what it is like.
 
+```{r}
+
+dim(gapminder)
+nrow(gapminder)
+ncol(gapminder)
+is.data.frame(gapminder) #It appears that this is indeed a dataframe
+is.vector(gapminder) # but not a vector
+is.matrix(gapminder) # nor a matrix
+is.list(gapminder) # It is also a list, because a dataframe is a list of lists
+
+class(gapminder) # This command is probably more simple to use, but I like when R yells TRUE or                     FALSE at me. According to this function, the dataset consists these classes:                     "tbl_df," "tbl" and "data.frame."
+
+str(gapminder) # There are 1704 observation of 6 variables
+                #these variables have data types: 2 are factors, 2 are integers, and 2 are                      numeric
+summary(gapminder)
+
+```
+As shown, there are several ways to get information about the parameters of a dataset.
+At this time, I do not see the value in all of these functions (there is a lot of redundance),
+but I'm sure this will change as I become more familiar with R.
+
+Now I will explore <u> one categorical variable and one numeric variable.</u>
+
+```{r}
+levels(gapminder$continent)
+# Interestingly, there are 5 levels of this variable:
+# "Africa"   "Americas" "Asia"     "Europe"   "Oceania"
+
+summary(gapminder$continent)
+  # Africa Americas     Asia   Europe  Oceania 
+  #    624      300      396      360       24
+
+```
+
+Let's see if we can show this in graphical form:
+```{r continents, echo=FALSE}
+pie(summary(gapminder$continent), main="Continents")
+```
+
+I should note that pie charts are not the best to use (they aren't as informative as barplots). But they're fun.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
