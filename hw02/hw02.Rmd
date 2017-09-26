@@ -59,22 +59,47 @@ pie(summary(gapminder$continent), main="Continents")
 
 I should note that pie charts are not the best to use (they aren't as informative as barplots). But they're fun.
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+Now we can move on to a numeric variable.
+
+```{r}
+summary(gapminder$lifeExp)
+  #  Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  # 23.60   48.20   60.71   59.47   70.85   82.60 
+
+```
+
+```{r lifeExp1, echo=FALSE}
+hist((gapminder$lifeExp), main="Histogram", xlab="Life Expectancy")
+```
+
+```{r lifeExp2, echo=FALSE}
+boxplot((gapminder$lifeExp), main="Boxplot", xlab="Life Expectancy")
+```
+
+From these graphs we can see the basic spread of the variable "lifeExp."
+
+Now, let's explore this variable in more depth using ggplot2.
+```{r lifeExp3, echo=FALSE}
+ggplot(gapminder, aes(x=gdpPercap, y=lifeExp)) +
+  geom_point(col="salmon", alpha=.25)
+```
+
+Let's try something new and fancy.
+```{r lifeExp4, echo=FALSE}
+g<- ggplot(gapminder, aes(x=continent, y=lifeExp))
+g+ geom_jitter(alpha=.5, aes(color=continent), position=position_jitter(width=.2))
+```
+
+This variable follows a Poisson distribution:
+```{r gdpPercap, echo=FALSE}
+ggplot(gapminder, aes(gdpPercap)) + geom_density(color="slategrey")
 ```
 
 
+Next, I will play with select, filter, and piping.
 
-```{r cars}
-summary(cars)
-```
 
-## Including Plots
 
-You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
 
 
