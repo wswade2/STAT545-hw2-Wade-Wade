@@ -1,8 +1,8 @@
 ---
-title: "hw02"
-author: "wade"
-date: "September 23, 2017"
-output: html_document
+Title: "hw02"
+Author: "wade"
+Date: "September 23, 2017"
+Output: html_document
 ---
 
 Welcome to my Stat 545 hw02 page. In this homework assignment, I will be exploring the gapminder dataset by using the dplyr package that we learned about during class.
@@ -11,7 +11,6 @@ First, I will load the packages I need:
 ```{r}
 require(tidyverse)
 require(gapminder)
-
 ```
 
 The gapminder dataset is <b>rectangular</b> data, which means, as far as I can surmise, that if you look at all of the data at once it literally is shaped like a rectangle.
@@ -19,7 +18,6 @@ The gapminder dataset is <b>rectangular</b> data, which means, as far as I can s
 Next, let's "smell test" the data to get a feel for what it is like.
 
 ```{r}
-
 dim(gapminder)
 nrow(gapminder)
 ncol(gapminder)
@@ -28,12 +26,12 @@ is.vector(gapminder) # but not a vector
 is.matrix(gapminder) # nor a matrix
 is.list(gapminder) # It is also a list, because a dataframe is a list of lists
 
-class(gapminder) # This command is probably more simple to use, but I like when R yells TRUE or                     FALSE at me. According to this function, the dataset consists these classes:                     "tbl_df," "tbl" and "data.frame."
+class(gapminder) 
+# This command is probably more simple to use, but I like when R yells TRUE or FALSE at me. According to this function, the dataset consists these classes:"tbl_df," "tbl" and "data.frame."
 
-str(gapminder) # There are 1704 observation of 6 variables
-                #these variables have data types: 2 are factors, 2 are integers, and 2 are                      numeric
+str(gapminder) 
+# There are 1704 observation of 6 variables these variables have data types: 2 are factors, 2 are integers, and 2 are numeric.
 summary(gapminder)
-
 ```
 As shown, there are several ways to get information about the parameters of a dataset.
 At this time, I do not see the value in all of these functions (there is a lot of redundance),
@@ -47,9 +45,6 @@ levels(gapminder$continent)
 # "Africa"   "Americas" "Asia"     "Europe"   "Oceania"
 
 summary(gapminder$continent)
-  # Africa Americas     Asia   Europe  Oceania 
-  #    624      300      396      360       24
-
 ```
 
 Let's see if we can show this in graphical form:
@@ -69,11 +64,11 @@ summary(gapminder$lifeExp)
 ```
 
 ```{r lifeExp1, echo=FALSE}
-hist((gapminder$lifeExp), main="Histogram", xlab="Life Expectancy")
+hist((gapminder$lifeExp), main="Histogram", xlab="Life Expectancy", col="aquamarine3")
 ```
 
 ```{r lifeExp2, echo=FALSE}
-boxplot((gapminder$lifeExp), main="Boxplot", xlab="Life Expectancy")
+boxplot((gapminder$lifeExp), main="Boxplot", xlab="Life Expectancy", col = "blueviolet")
 ```
 
 From these graphs we can see the basic spread of the variable "lifeExp."
@@ -90,11 +85,10 @@ g<- ggplot(gapminder, aes(x=continent, y=lifeExp))
 g+ geom_jitter(alpha=.5, aes(color=continent), position=position_jitter(width=.2))
 ```
 
-This variable follows a Poisson distribution:
+This variable follows a <u>Poisson</u> distribution:
 ```{r gdpPercap, echo=FALSE}
 ggplot(gapminder, aes(gdpPercap)) + geom_density(color="slategrey")
 ```
-
 
 Next, I will play with select, filter, and piping.
 
@@ -102,13 +96,10 @@ What was the life expectancy for the continent <b>Oceania</b> in 1962?
 
 ```{r}
 filter(gapminder, continent=="Oceania", year==1962)
-
 ```
 
 ```{r}
-
 filter(gapminder, lifeExp<70) %>% select(country,pop, lifeExp) %>%tail(10)
-
 ```
 
 Piping is more simple than I expected, and is a huge quality of life improvement.
