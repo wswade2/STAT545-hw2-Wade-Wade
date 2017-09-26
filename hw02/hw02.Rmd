@@ -3,6 +3,9 @@ Title: "hw02"
 Author: "wade"
 Date: "September 23, 2017"
 Output: html_document
+output: 
+  html_document: 
+    keep_md: yes
 ---
 
 Welcome to my Stat 545 hw02 page. In this homework assignment, I will be exploring the gapminder dataset by using the dplyr package that we learned about during class.
@@ -27,7 +30,8 @@ is.matrix(gapminder) # nor a matrix
 is.list(gapminder) # It is also a list, because a dataframe is a list of lists
 
 class(gapminder) 
-# This command is probably more simple to use, but I like when R yells TRUE or FALSE at me. According to this function, the dataset consists these classes:"tbl_df," "tbl" and "data.frame."
+# This command is probably more simple to use, but I like when R yells TRUE or FALSE at me. According to this function, the dataset consists of these classes:
+#"tbl_df," "tbl" and "data.frame."
 
 str(gapminder) 
 # There are 1704 observation of 6 variables these variables have data types: 2 are factors, 2 are integers, and 2 are numeric.
@@ -121,7 +125,7 @@ filter(gapminder, country %in% c("Rwanda", "Afghanistan"))
 
 This brings back twice as many values as the other code. It looks like R was doing something strange, like averaging the two countries together.
 
-#Process
+##Process
 
 <li>This homework was simple (the in-class training was excellent, especially for dplyr), but it did take me a long time to complete.</li>
 <li> I used my class notes a lot during this assignment </li>
